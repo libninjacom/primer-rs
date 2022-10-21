@@ -6,76 +6,75 @@ use primer_api::request::UpdateClientSideTokenClientSessionPatchRequired;
 async fn main() {
     let client = PrimerClient::from_env();
     let args = UpdateClientSideTokenClientSessionPatchRequired {
-        customer_id: "your customer id",
-        order_id: "your order id",
         client_token: "your client token",
+        payment_method: CheckoutPaymentMethodOptionsApiSchema {
+            descriptor: Some("your descriptor".to_owned()),
+            payment_type: Some("your payment type".to_owned()),
+            options: Some(::serde_json::json!({})),
+            vault_on_success: Some(true),
+        },
+        currency_code: "your currency code",
+        metadata: ::serde_json::json!({}),
+        amount: ::serde_json::json!({}),
+        order_id: "your order id",
+        customer_id: "your customer id",
         order: OrderDetailsApiSchema {
             line_items: Some(
                 vec![
-                    OrderLineItemsApiSchema { tax_code : Some("your tax code"
-                    .to_owned()), item_id : Some("your item id".to_owned()), description
-                    : Some("your description".to_owned()), quantity : Some(1), name :
-                    Some("your name".to_owned()), amount : ::serde_json::json!({}),
-                    tax_amount : Some(1), discount_amount :
-                    Some(::serde_json::json!({})), product_data :
-                    Some(OrderLineItemsProductDataApiSchema { weight : Some(1.0),
-                    weight_unit : Some("your weight unit".to_owned()), brand :
-                    Some("your brand".to_owned()), sku : Some("your sku".to_owned()),
+                    OrderLineItemsApiSchema { amount : ::serde_json::json!({}), item_id :
+                    Some("your item id".to_owned()), name : Some("your name".to_owned()),
+                    product_data : Some(OrderLineItemsProductDataApiSchema {
+                    manufacturer_part_number : Some("your manufacturer part number"
+                    .to_owned()), weight : Some(1.0), brand : Some("your brand"
+                    .to_owned()), color : Some("your color".to_owned()),
                     global_trade_item_number : Some("your global trade item number"
-                    .to_owned()), manufacturer_part_number :
-                    Some("your manufacturer part number".to_owned()), color :
-                    Some("your color".to_owned()) }), product_type :
+                    .to_owned()), weight_unit : Some("your weight unit".to_owned()), sku
+                    : Some("your sku".to_owned()) }), discount_amount :
+                    Some(::serde_json::json!({})), quantity : Some(1), tax_code :
+                    Some("your tax code".to_owned()), tax_amount : Some(1), description :
+                    Some("your description".to_owned()), product_type :
                     Some("your product type".to_owned()) }
                 ],
             ),
+            country_code: Some(CountryCodeEnum(::serde_json::json!({}))),
             fees: Some(
                 vec![
-                    OrderFeesApiSchema { type_ : Some("your type".to_owned()), amount :
-                    ::serde_json::json!({}), description : Some("your description"
+                    OrderFeesApiSchema { amount : ::serde_json::json!({}), type_ :
+                    Some("your type".to_owned()), description : Some("your description"
                     .to_owned()) }
                 ],
             ),
             shipping: Some(OrderShippingApiSchema {
                 amount: Some(::serde_json::json!({})),
             }),
-            country_code: Some(CountryCodeEnum(::serde_json::json!({}))),
         },
-        currency_code: "your currency code",
-        payment_method: CheckoutPaymentMethodOptionsApiSchema {
-            vault_on_success: Some(true),
-            descriptor: Some("your descriptor".to_owned()),
-            payment_type: Some("your payment type".to_owned()),
-            options: Some(::serde_json::json!({})),
-        },
-        metadata: ::serde_json::json!({}),
-        amount: ::serde_json::json!({}),
         customer: CheckoutCustomerDetailsApiSchema {
-            first_name: Some("your first name".to_owned()),
-            national_document_id: Some("your national document id".to_owned()),
-            last_name: Some("your last name".to_owned()),
-            billing_address: Some(CoreApiApiCommonsSchemasAddessAddressApiSchema {
-                address_line1: Some("your address line 1".to_owned()),
-                postal_code: Some("your postal code".to_owned()),
-                country_code: Some(CountryCodeEnum(::serde_json::json!({}))),
-                address_line2: Some("your address line 2".to_owned()),
-                last_name: Some("your last name".to_owned()),
-                first_name: Some("your first name".to_owned()),
-                city: Some("your city".to_owned()),
-                state: Some("your state".to_owned()),
-            }),
-            tax_id: Some("your tax id".to_owned()),
             email_address: Some("your email address".to_owned()),
             mobile_number: Some("your mobile number".to_owned()),
-            shipping_address: Some(CoreApiApiCommonsSchemasAddessAddressApiSchema {
-                address_line1: Some("your address line 1".to_owned()),
+            tax_id: Some("your tax id".to_owned()),
+            first_name: Some("your first name".to_owned()),
+            billing_address: Some(CoreApiApiCommonsSchemasAddessAddressApiSchema {
                 postal_code: Some("your postal code".to_owned()),
-                country_code: Some(CountryCodeEnum(::serde_json::json!({}))),
-                address_line2: Some("your address line 2".to_owned()),
-                last_name: Some("your last name".to_owned()),
+                address_line1: Some("your address line 1".to_owned()),
                 first_name: Some("your first name".to_owned()),
-                city: Some("your city".to_owned()),
+                last_name: Some("your last name".to_owned()),
                 state: Some("your state".to_owned()),
+                address_line2: Some("your address line 2".to_owned()),
+                city: Some("your city".to_owned()),
+                country_code: Some(CountryCodeEnum(::serde_json::json!({}))),
             }),
+            shipping_address: Some(CoreApiApiCommonsSchemasAddessAddressApiSchema {
+                postal_code: Some("your postal code".to_owned()),
+                address_line1: Some("your address line 1".to_owned()),
+                first_name: Some("your first name".to_owned()),
+                last_name: Some("your last name".to_owned()),
+                state: Some("your state".to_owned()),
+                address_line2: Some("your address line 2".to_owned()),
+                city: Some("your city".to_owned()),
+                country_code: Some(CountryCodeEnum(::serde_json::json!({}))),
+            }),
+            national_document_id: Some("your national document id".to_owned()),
+            last_name: Some("your last name".to_owned()),
         },
     };
     let response = client
