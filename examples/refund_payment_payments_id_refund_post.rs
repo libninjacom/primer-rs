@@ -7,8 +7,8 @@ async fn main() {
     let client = PrimerClient::from_env();
     let args = RefundPaymentPaymentsIdRefundPostRequired {
         amount: ::serde_json::json!({}),
-        reason: "your reason",
         id: "your id",
+        reason: "your reason",
         order_id: "your order id",
     };
     let response = client
