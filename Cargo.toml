@@ -1,0 +1,149 @@
+[package]
+name = "primer-api"
+edition = "2021"
+version = "0.1.0"
+description = "primer client, generated from the OpenAPI spec."
+homepage = "https://github.com/libninjacom/primer-rs"
+documentation = "https://docs.rs/primer-api"
+readme = "README.md"
+license = "MIT"
+repository = "https://github.com/libninjacom/primer-rs"
+
+[workspace]
+members = []
+
+[dependencies]
+anyhow = "1.0.57"
+httpclient = "0.8.0"
+serde_json = "1.0.81"
+
+[dependencies.serde]
+version = "1.0.137"
+features = ["derive"]
+optional = false
+[dev-dependencies.tokio]
+version = "1.18.2"
+features = ["full"]
+optional = false
+
+[lib]
+path = "src/lib.rs"
+name = "primer_api"
+doctest = false
+plugin = false
+proc-macro = false
+edition = "2021"
+crate-type = ["rlib"]
+required-features = []
+
+[[example]]
+path = "examples/cancel_payment_payments_id_cancel_post.rs"
+name = "cancel_payment_payments_id_cancel_post"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/capture_payment_payments_id_capture_post.rs"
+name = "capture_payment_payments_id_capture_post"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/create_client_side_token_client_session_post.rs"
+name = "create_client_side_token_client_session_post"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/create_payment_payments_post.rs"
+name = "create_payment_payments_post"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/delete_payment_method_payment_methods_token_delete.rs"
+name = "delete_payment_method_payment_methods_token_delete"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/get_payment_by_id_payments_id_get.rs"
+name = "get_payment_by_id_payments_id_get"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/get_payment_methods_payment_methods_get.rs"
+name = "get_payment_methods_payment_methods_get"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/list_payments_payments_get.rs"
+name = "list_payments_payments_get"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/refund_payment_payments_id_refund_post.rs"
+name = "refund_payment_payments_id_refund_post"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/resume_payment_payments_id_resume_post.rs"
+name = "resume_payment_payments_id_resume_post"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/retrieve_client_side_token_client_session_get.rs"
+name = "retrieve_client_side_token_client_session_get"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/set_payment_method_default_payment_methods_token_default_post.rs"
+name = "set_payment_method_default_payment_methods_token_default_post"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/update_client_side_token_client_session_patch.rs"
+name = "update_client_side_token_client_session_patch"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[example]]
+path = "examples/vault_payment_method_payment_methods_token_vault_post.rs"
+name = "vault_payment_method_payment_methods_token_vault_post"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
